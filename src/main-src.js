@@ -14,7 +14,7 @@ const tasks = [
   },
   {
     description: 'Third Task',
-    completed: false,
+    completed: true,
     index: 3,
   },
   {
