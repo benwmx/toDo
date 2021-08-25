@@ -30,6 +30,8 @@ const showList = (tasksList) => {
     description.innerHTML += ` ${tasksList[index].description}`;
     descriptionContainer.appendChild(description);
     descriptionContainer.appendChild(editDescription);
+    task.className = 'task';
+    task.setAttribute('draggable', 'true');
     task.appendChild(descriptionContainer);
     task.appendChild(remove);
     task.appendChild(edit);

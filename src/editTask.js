@@ -3,7 +3,6 @@ import showList from './showList.js';
 
 const editTask = (tasks, target) => {
   const id = parseInt(target.parentElement.parentElement.id, 10);
-  console.log(id);
   let description = target.innerText;
   const input = target.parentElement.lastChild;
   const editButton = target.parentElement.parentElement.lastChild;
