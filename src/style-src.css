@@ -79,3 +79,9 @@ i {
   color: white;
   background-color: red;
 }
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+  font-style: italic;
+}
