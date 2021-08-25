@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Klee+One:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #c3e0e5;
+}
+
+i {
+  cursor: pointer;
+}
+
+.list-container {
+  background-color: #274472;
+  position: relative;
+  overflow-y: auto;
+  display: flex;
+  flex-flow: column;
+  width: 55%;
+  height: 70%;
+  margin: 10% auto;
+  box-shadow: 5px 5px 20px grey;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.list-container .title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 50px;
+  padding: 0 20px 0 20px;
+  font-size: 1.8rem;
+  color: #e4f4f3;
+  font-family: 'Klee One', cursive;
+  font-weight: 600;
+}
+
+.list-container .add {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 50px;
+  border-top: 1px solid gray;
+}
+
+.list-container .add input {
+  background-color: transparent;
+  border: none;
+  margin-left: 20px;
+  width: 80%;
+  min-height: 45px;
+  font-size: 1.3rem;
+  color: #c3e0e5;
+}
+
+.list-container .add #add {
+  margin-right: 20px;
+  font-size: 1.2em;
+  border: none;
+  background-color: transparent;
+  color: #c3e0e5;
+}
+
+.list-container .clear {
+  background-color: #5885af;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  min-height: 50px;
+  text-align: center;
+  border-top: 1px solid gray;
+  color: white;
+}
+
+.list-container .clear:active {
+  color: white;
+  background-color: red;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+  font-style: italic;
+}
+
+.d-none {
+  display: none;
+}
+
+.list-container .list {
+  overflow-y: auto;
+  display: flex;
+  flex-flow: column;
+  height: 77%;
+  padding-left: 0;
+  margin: 0;
+}
+
+.list-container .list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  list-style: none;
+  border: 1px solid gray;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+}
+
+.list-container .list li .description-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 90%;
+  margin: 0;
+  margin-left: 20px;
+  min-height: 70px;
+}
+
+.list-container .list li .description-container p {
+  margin: 10px;
+  width: 90%;
+  font-size: 1.2rem;
+  font-family: 'Klee One', cursive;
+  color: #c3e0e5;
+}
+
+.fa-trash {
+  color: red;
+  padding: 10px;
+  font-size: 1.3rem;
+  margin-right: 15px;
+}
