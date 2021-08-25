@@ -10,6 +10,7 @@ import addTask from './addTask.js';
 import removeTask from './removeTask.js';
 import removeCompletedTasks from './removeCompletedTasks.js';
 import editTask from './editTask.js';
+import updateAfterDrag from './updateAfterDrag.js';
 
 
 let tasks = getStorage();
@@ -46,7 +47,7 @@ clearAllButton.addEventListener('click', () => {
   tasks = removeCompletedTasks(tasks);
 });
 
-// add a task ----------------------------------------------------------------
+// add task ----------------------------------------------------------------
 const addTaskButton = document.getElementById('add');
 addTaskButton.addEventListener('click', () => {
   addTask(tasks);
@@ -54,16 +55,13 @@ addTaskButton.addEventListener('click', () => {
   showList(tasks);
 });
 
+// dragAndDrop task ---------------------------------------------------------
 new Sortable(listDiv, {
   animation: 100,
   ghostClass: 'dragging',
 });
 
-listDiv.addEventListener('drag', () => {
-  console.log('drag started');
+listDiv.addEventListener('dragend', (event) => {
+  updateAfterDrag(listDiv);
+  event.stopPropagation();
 });
-
-listDiv.addEventListener('dragend', () => {
-  console.log('drag ended');
-  
-})
