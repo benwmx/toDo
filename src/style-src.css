@@ -4,7 +4,7 @@ body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: #C3E0E5;
+  background-color: #c3e0e5;
 }
 
 i {
@@ -35,7 +35,7 @@ i {
   min-height: 50px;
   padding: 0 20px 0 20px;
   font-size: 1.2rem;
-  color: #E4F4F3;
+  color: #e4f4f3;
 }
 
 .list-container .add {
