@@ -22,7 +22,7 @@ i {
   width: 55%;
   height: 70%;
   margin: 10% auto;
-  box-shadow: 5px 5px 20px grey;
+  box-shadow: 10px 10px 20px grey;
   border-radius: 8px;
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -129,11 +129,28 @@ i {
 }
 
 .list-container .list li .description-container p {
-  margin: 10px;
+  margin: 10px 5px;
   width: 90%;
   font-size: 1.2rem;
   font-family: 'Klee One', cursive;
   color: #c3e0e5;
+}
+
+.list-container .list .description-container .check {
+  appearance: none;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: 2px solid #c3e0e5;
+  margin-right: 10px;
+  background: rgba(255, 241, 241, 0.1);
+}
+
+.list-container .list .description-container .edit-description {
+  min-height: 55px;
+  width: 90%;
+  font-size: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
 }
 
 .fa-trash {
@@ -141,4 +158,19 @@ i {
   padding: 10px;
   font-size: 1.3rem;
   margin-right: 15px;
+}
+
+.fa-check {
+  font-size: 1.5rem;
+  color: #c3e0e5;
+}
+
+.fa-edit {
+  font-size: 1.3rem;
+  margin-right: 15px;
+  color: #c3e0e5;
+}
+
+.dragging {
+  background-color: #0fabbd;
 }

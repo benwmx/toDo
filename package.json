@@ -34,5 +34,8 @@
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.0.0"
+  },
+  "dependencies": {
+    "sortablejs": "^1.14.0"
   }
 }
