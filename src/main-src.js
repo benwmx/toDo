@@ -21,19 +21,23 @@ const clearAllButton = document.getElementById('clear-list');
 listDiv.addEventListener('click', (event) => {
   if (event.target !== event.currentTarget) {
     if (event.target.className === 'check') {
+      tasks = getStorage();
       updateStatus(tasks, parseInt(event.target.parentElement.parentElement.id, 10), true);
       showList(tasks);
       updateStorage(tasks);
     }
     if (event.target.className === 'fas fa-check') {
+      tasks = getStorage();
       updateStatus(tasks, parseInt(event.target.parentElement.parentElement.id, 10), false);
       showList(tasks);
       updateStorage(tasks);
     }
     if (event.target.className === 'fas fa-trash') {
+      tasks = getStorage();
       tasks = removeTask(tasks, parseInt(event.target.parentElement.id, 10));
     }
     if (event.target.classList.contains('description')) {
+      tasks = getStorage();
       editTask(tasks, event.target);
     }
   }
