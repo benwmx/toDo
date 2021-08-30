@@ -134,6 +134,7 @@ i {
   font-size: 1.2rem;
   font-family: 'Klee One', cursive;
   color: #c3e0e5;
+  word-wrap: break-word;
 }
 
 .list-container .list .description-container .check {

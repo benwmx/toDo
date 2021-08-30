@@ -2,15 +2,13 @@
 
 import './style-src.css';
 import Sortable from 'sortablejs';
-import showList from './showList.js';
-import updateStatus from './updateStatus.js';
-import updateStorage from './updateStorage.js';
-import getStorage from './getStorage.js';
-import addTask from './addTask.js';
-import removeTask from './removeTask.js';
-import removeCompletedTasks from './removeCompletedTasks.js';
-import editTask from './editTask.js';
-import updateAfterDrag from './updateAfterDrag.js';
+import {
+  showList, updateStorage, addTask, editTask, updateStatus,
+} from './task.js';
+
+import {
+  getStorage, updateAfterDrag, removeCompletedTasks, removeTask,
+} from './storage.js';
 
 let tasks = getStorage();
 
