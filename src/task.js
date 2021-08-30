@@ -1,4 +1,3 @@
-
 export const showList = (tasksList) => {
   const listDiv = document.getElementById('list');
   listDiv.innerHTML = '';
