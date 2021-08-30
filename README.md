@@ -16,9 +16,9 @@ Additional description about the project and its features.
 - Webpack
 
 ## Live Demo
-[![Netlify Status](https://api.netlify.com/api/v1/badges/0d3c11d5-1ef7-4833-8621-0d05254b53af/deploy-status)](https://app.netlify.com/sites/tasks0rganizer/deploys)
+Deployed to Github Pages
 
-[Live Demo Link](https://tasks0rganizer.netlify.app/)
+[Live Demo Link](https://benwmx.github.io/toDo/)
 
 ## Getting Started
 
