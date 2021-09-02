@@ -29,8 +29,5 @@ export const removeCompletedTasks = (tasks) => {
 
 export const removeTask = (tasks, id) => {
   tasks = tasks.filter((task) => task.index !== id);
-  orderTasks(tasks);
-  updateStorage(tasks);
-  showList(tasks);
   return tasks;
 };

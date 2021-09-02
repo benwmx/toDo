@@ -3,7 +3,7 @@
 import './style-src.css';
 import Sortable from 'sortablejs';
 import {
-  showList, updateStorage, addTask, editTask, updateStatus,
+  showList, updateStorage, addTask, editTask, updateStatus, orderTasks,
 } from './task.js';
 
 import {
@@ -33,6 +33,9 @@ listDiv.addEventListener('click', (event) => {
     if (event.target.className === 'fas fa-trash') {
       tasks = getStorage();
       tasks = removeTask(tasks, parseInt(event.target.parentElement.id, 10));
+      orderTasks(tasks);
+      updateStorage(tasks);
+      showList(tasks);
     }
     if (event.target.classList.contains('description')) {
       tasks = getStorage();
@@ -48,7 +51,9 @@ clearAllButton.addEventListener('click', () => {
 
 const addTaskButton = document.getElementById('add');
 addTaskButton.addEventListener('click', () => {
-  addTask(tasks);
+  const description = document.getElementById('task-desc').value;
+  addTask(tasks, description);
+  document.getElementById('task-desc').value = '';
   updateStorage(tasks);
   showList(tasks);
 });

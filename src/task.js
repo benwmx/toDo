@@ -43,12 +43,10 @@ export const updateStorage = (storage) => {
   localStorage.setItem('storage', JSON.stringify(storage));
 };
 
-export const addTask = (tasks) => {
-  const description = document.getElementById('task-desc').value;
+export const addTask = (tasks, description) => {
   const index = (tasks.length === 0) ? 1 : tasks[tasks.length - 1].index + 1;
   const completed = false;
   tasks.push({ description, index, completed });
-  document.getElementById('task-desc').value = '';
 };
 
 export const editTask = (tasks, target) => {
