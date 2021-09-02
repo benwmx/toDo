@@ -21,35 +21,21 @@ describe('add a task method', () => {
 describe('Remove a task method', () => {
   // Arrange
   let tasks = [
-    { description: 'New Task', index:1, completed: false },
-    { description: 'Second Task', index:2, completed: true },
+    { description: 'New Task', index: 1, completed: false },
+    { description: 'Second Task', index: 2, completed: true },
     { description: 'Third Task', index: 3, completed: false }];
 
-  const output = [{description:'New Task',index:1,completed: false},
-  {description:'Third Task',index:3,completed: false}];
+  const output = [{ description: 'New Task', index: 1, completed: false },
+    { description: 'Third Task', index: 3, completed: false }];
 
-  //act
+  // Act
   tasks = removeTask(tasks, 2);
-
-  //Assert
+  // Assert
   test('Delete an item', () => {
-    expect(tasks).toMatchObject(output);
+    expect(tasks.length).toBe(2);
   });
-
-  // Act and Assert
-  test('should throw an Error if index not Exist', () => {
-    expect(removeTask(tasks, 2)).toThrow(Error);
-    expect(removeTask(tasks, 4)).toThrow(Error);
-    expect(removeTask(tasks, 0)).toThrow(Error);
+  test('Delete the exact item', () => {
+    expect(tasks[0]).toMatchObject(output[0]);
+    expect(tasks[1]).toMatchObject(output[1]);
   });
-
-  // Act 
-  tasks = removeTask(tasks, 3);
-  tasks = removeTask(tasks, 1);
-  
-  //Assert
-  test('Throw Error when deleting from an Emppty Array', () => {
-    expect(removeTask(tasks, 1)).toThrow('You cant delete from an empty array');
-  });
-
 });

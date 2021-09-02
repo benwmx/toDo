@@ -50,24 +50,8 @@ export const addTask = (tasks, description) => {
 };
 
 export const removeTask = (tasks, id) => {
-  if (tasks.length === 0) {
-    throw new Error('You cant delete from an empty array');
-  }
-  else{
-  let indexExist = false;
-  tasks.forEach((task) => {
-    if (task.index === id) {
-      indexExist = true;
-    }
-  });
-  if (!indexExist) {
-    throw new Error('Index not Exist');
-  }
-  else {
   tasks = tasks.filter((task) => task.index !== id);
   return tasks;
-}
-}
 };
 
 export const editTask = (tasks, target) => {
