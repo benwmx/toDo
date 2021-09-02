@@ -8,7 +8,7 @@ describe('add a task method', () => {
 
   // Act
   addTask(tasks, description);
-
+  console.log(tasks[0] === output);
   // Assert
   test('should add a task', () => {
     expect(tasks.length).toBe(1);

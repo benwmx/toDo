@@ -3,11 +3,11 @@
 import './style-src.css';
 import Sortable from 'sortablejs';
 import {
-  showList, updateStorage, addTask, editTask, updateStatus, orderTasks,
+  showList, updateStorage, addTask, editTask, updateStatus, orderTasks, removeTask,
 } from './task.js';
 
 import {
-  getStorage, updateAfterDrag, removeCompletedTasks, removeTask,
+  getStorage, updateAfterDrag, removeCompletedTasks,
 } from './storage.js';
 
 let tasks = getStorage();
@@ -47,6 +47,7 @@ listDiv.addEventListener('click', (event) => {
 
 clearAllButton.addEventListener('click', () => {
   tasks = removeCompletedTasks(tasks);
+  showList(tasks);
 });
 
 const addTaskButton = document.getElementById('add');
@@ -64,6 +65,7 @@ new Sortable(listDiv, {
 });
 
 listDiv.addEventListener('dragend', (event) => {
-  updateAfterDrag(listDiv);
+  tasks = updateAfterDrag(listDiv);
+  showList(tasks);
   event.stopPropagation();
 });

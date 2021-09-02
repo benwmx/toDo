@@ -49,6 +49,11 @@ export const addTask = (tasks, description) => {
   tasks.push({ description, index, completed });
 };
 
+export const removeTask = (tasks, id) => {
+  tasks = tasks.filter((task) => task.index !== id);
+  return tasks;
+};
+
 export const editTask = (tasks, target) => {
   const id = parseInt(target.parentElement.parentElement.id, 10);
   let description = target.innerText;
