@@ -80,3 +80,17 @@ export const removeCompletedTasks = (tasks) => {
 export const edit = (tasks, description, id) => {
   tasks[id - 1].description = description;
 };
+
+export const updateAfterDrag = (container) => {
+  const listOfElements = container.children;
+  const tasks = localStorage.getItem('storage');
+  const orderedTasks = [];
+  Array.from(listOfElements).forEach((element) => {
+    const id = parseInt(element.id, 10);
+    const index = tasks.findIndex((task) => task.index === id);
+    orderedTasks.push(tasks[index]);
+  });
+  orderTasks(orderedTasks);
+  updateStorage(orderedTasks);
+  return orderedTasks;
+};

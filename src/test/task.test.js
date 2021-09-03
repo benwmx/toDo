@@ -2,7 +2,8 @@
  * @jest-environment jsdom
  */
 import {
-  addTask, removeTask, orderTasks, updateStorage, showList, updateStatus, removeCompletedTasks, edit
+  addTask, removeTask, orderTasks,
+  updateStorage, showList, updateStatus, removeCompletedTasks, edit,
 } from '../task.js';
 import localStorage from '../__mocks__/localStorage.js';
 
@@ -134,5 +135,30 @@ describe('Edit a tasks', () => {
     edit(tasks, description, id);
     // Assert
     expect(tasks).toMatchObject(output);
+  });
+});
+
+describe('Update the local storage after Drag/Drop', () => {
+  test('test', () => {
+    // Arrange
+    addTask(tasks, 'second task');
+    addTask(tasks, 'third task');
+
+    output = [
+  { description: 'The Task has been Edited', index: 1, completed: false },
+  { description: 'second Task', index: 2, completed: false },
+  { description: 'third Task', index: 3, completed: false },
+];
+    const list = document.getElementById('#list');
+    
+    // const description = 'The Task has been Edited';
+    // const id = 1;
+    // output = [
+    //   { description, index: 1, completed: false },
+    // ];
+    // // Act
+    // edit(tasks, description, id);
+    // // Assert
+    // expect(tasks).toMatchObject(output);
   });
 });
