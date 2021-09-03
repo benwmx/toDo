@@ -1,4 +1,4 @@
-/* eslint-disable no-new */
+ /* eslint-disable no-new */
 
 import './style-src.css';
 import Sortable from 'sortablejs';

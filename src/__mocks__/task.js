@@ -1,0 +1,24 @@
+/* eslint-disable import/prefer-default-export */
+
+import localStorage from './localStorage.js';
+
+export const updateStorage = (storage) => {
+  localStorage.setItem('storage', JSON.stringify(storage));
+};
+
+export const addTask = (tasks, description) => {
+  const index = (tasks.length === 0) ? 1 : tasks[tasks.length - 1].index + 1;
+  const completed = false;
+  tasks.push({ description, index, completed });
+};
+
+export const removeTask = (tasks, id) => {
+  tasks = tasks.filter((task) => task.index !== id);
+  return tasks;
+};
+
+export const orderTasks = (tasks) => {
+  for (let i = 0; i < tasks.length; i += 1) {
+    tasks[i].index = i + 1;
+  }
+};
