@@ -7,7 +7,9 @@
 
 ![screenshot](./img/preview.png)
 
-Additional description about the project and its features.
+## Unit Testing [jest](https://jestjs.io/)
+
+![](./img/test.png)
 
 ## Built With
 
