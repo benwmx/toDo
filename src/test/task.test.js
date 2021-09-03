@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import {
-  addTask, removeTask, orderTasks,
+  addTask, removeTask, orderTasks, updateAfterDrag,
   updateStorage, showList, updateStatus, removeCompletedTasks, edit,
 } from '../task.js';
 import localStorage from '../__mocks__/localStorage.js';
@@ -143,22 +143,48 @@ describe('Update the local storage after Drag/Drop', () => {
     // Arrange
     addTask(tasks, 'second task');
     addTask(tasks, 'third task');
+    updateStorage(tasks);
 
     output = [
-  { description: 'The Task has been Edited', index: 1, completed: false },
-  { description: 'second Task', index: 2, completed: false },
-  { description: 'third Task', index: 3, completed: false },
-];
-    const list = document.getElementById('#list');
-    
-    // const description = 'The Task has been Edited';
-    // const id = 1;
-    // output = [
-    //   { description, index: 1, completed: false },
-    // ];
-    // // Act
-    // edit(tasks, description, id);
-    // // Assert
-    // expect(tasks).toMatchObject(output);
+      { description: 'third task', index: 1, completed: false },
+      { description: 'The Task has been Edited', index: 2, completed: false },
+      { description: 'second task', index: 3, completed: false },
+    ];
+    // console.log('tasks ', tasks);
+
+    const list = document.querySelector('#list');
+    list.innerHTML = `<li id="3" class="task" draggable="true">
+                        <div class="description-container">
+                            <input type="checkbox" class="check">
+                            <p class=" description"> third task</p>
+                            <input type="text" id="edit-Description" class="edit-description d-none">
+                        </div>
+                        <i class="fas fa-trash" aria-hidden="true"></i>
+                        <i class="fas fa-edit d-none" aria-hidden="true"></i>
+                     </li>
+                     <li id="1" class="task" draggable="true">
+                        <div class="description-container">
+                            <input type="checkbox" class="check">
+                            <p class=" description"> The Task has been Edited</p>
+                            <input type="text" id="edit-Description" class="edit-description d-none">
+                        </div>
+                        <i class="fas fa-trash" aria-hidden="true"></i>
+                        <i class="fas fa-edit d-none" aria-hidden="true"></i>
+                     </li>
+                     <li id="2" class="task" draggable="true">
+                        <div class="description-container">
+                          <input type="checkbox" class="check">
+                          <p class=" description"> second task</p>
+                          <input type="text" id="edit-Description" class="edit-description d-none">
+                        </div>
+                        <i class="fas fa-trash" aria-hidden="true"></i>
+                        <i class="fas fa-edit d-none" aria-hidden="true"></i>
+                     </li>`;
+    // Act
+    updateAfterDrag(list);
+    tasks = localStorage.getItem('storage');
+
+    // Assert
+    expect(tasks).toMatchObject(output);
   });
 });
