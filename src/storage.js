@@ -1,4 +1,4 @@
-import { orderTasks, updateStorage } from './task.js';
+import { orderTasks, showList, updateStorage } from './task.js';
 
 export const getStorage = () => {
   const storage = JSON.parse(localStorage.getItem('storage'));
@@ -16,12 +16,21 @@ export const updateAfterDrag = (container) => {
   });
   orderTasks(orderedTasks);
   updateStorage(orderedTasks);
-  return orderedTasks;
+  showList(orderedTasks);
 };
 
 export const removeCompletedTasks = (tasks) => {
   tasks = tasks.filter((task) => task.completed === false);
   orderTasks(tasks);
   updateStorage(tasks);
+  showList(tasks);
+  return tasks;
+};
+
+export const removeTask = (tasks, id) => {
+  tasks = tasks.filter((task) => task.index !== id);
+  orderTasks(tasks);
+  updateStorage(tasks);
+  showList(tasks);
   return tasks;
 };
