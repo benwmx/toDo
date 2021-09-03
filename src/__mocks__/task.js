@@ -1,3 +1,28 @@
+/* eslint-disable import/prefer-default-export */
+
+import localStorage from './localStorage.js';
+
+export const updateStorage = (storage) => {
+  localStorage.setItem('storage', JSON.stringify(storage));
+};
+
+export const addTask = (tasks, description) => {
+  const index = (tasks.length === 0) ? 1 : tasks[tasks.length - 1].index + 1;
+  const completed = false;
+  tasks.push({ description, index, completed });
+};
+
+export const removeTask = (tasks, id) => {
+  tasks = tasks.filter((task) => task.index !== id);
+  return tasks;
+};
+
+export const orderTasks = (tasks) => {
+  for (let i = 0; i < tasks.length; i += 1) {
+    tasks[i].index = i + 1;
+  }
+};
+
 export const showList = (tasksList) => {
   const listDiv = document.getElementById('list');
   listDiv.innerHTML = '';
@@ -37,58 +62,4 @@ export const showList = (tasksList) => {
     task.appendChild(edit);
     listDiv.appendChild(task);
   }
-};
-
-export const updateStorage = (storage) => {
-  localStorage.setItem('storage', JSON.stringify(storage));
-};
-
-export const addTask = (tasks, description) => {
-  const index = (tasks.length === 0) ? 1 : tasks[tasks.length - 1].index + 1;
-  const completed = false;
-  tasks.push({ description, index, completed });
-};
-
-export const removeTask = (tasks, id) => {
-  tasks = tasks.filter((task) => task.index !== id);
-  return tasks;
-};
-
-export const editTask = (tasks, target) => {
-  const id = parseInt(target.parentElement.parentElement.id, 10);
-  let description = target.innerText;
-  const input = target.parentElement.lastChild;
-  const editButton = target.parentElement.parentElement.lastChild;
-  const removeButton = editButton.previousSibling;
-  target.classList.add('d-none');
-  removeButton.classList.add('d-none');
-  editButton.classList.remove('d-none');
-  input.value = description;
-  input.classList.remove('d-none');
-  input.addEventListener('keyup', () => {
-    description = input.value;
-  });
-  editButton.addEventListener('click', () => {
-    for (let i = 0; i < tasks.length; i += 1) {
-      if (tasks[i].index === id) tasks[i].description = description;
-    }
-    editButton.classList.add('d-none');
-    removeButton.classList.remove('d-none');
-    input.classList.add('d-none');
-    target.classList.remove('d-none');
-    updateStorage(tasks);
-    showList(tasks);
-  });
-};
-
-export const orderTasks = (tasks) => {
-  for (let i = 0; i < tasks.length; i += 1) {
-    tasks[i].index = i + 1;
-  }
-};
-
-export const updateStatus = (list, id, completed) => {
-  list.forEach((task) => {
-    if (task.index === id) task.completed = completed;
-  });
 };

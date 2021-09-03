@@ -5,7 +5,7 @@
   "private": true,
   "homepage": "https://benwmx.github.io/toDo/",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --coverage",
     "build": "webpack",
     "start": "webpack serve --open",
     "predeploy": "npm run build",
@@ -22,6 +22,7 @@
     "url": "https://github.com/benwmx/toDo/issues"
   },
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.15.0",
     "babel-eslint": "10.1.x",
     "css-loader": "^6.2.0",
     "eslint": "6.8.x",
@@ -29,6 +30,7 @@
     "eslint-plugin-import": "2.20.x",
     "gh-pages": "^3.2.3",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.1.0",
     "style-loader": "^3.2.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
