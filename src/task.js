@@ -54,6 +54,10 @@ export const removeTask = (tasks, id) => {
   return tasks;
 };
 
+export const edit = (tasks, description, id) => {
+  tasks[id - 1].description = description;
+};
+
 export const editTask = (tasks, target) => {
   const id = parseInt(target.parentElement.parentElement.id, 10);
   let description = target.innerText;
@@ -69,9 +73,7 @@ export const editTask = (tasks, target) => {
     description = input.value;
   });
   editButton.addEventListener('click', () => {
-    for (let i = 0; i < tasks.length; i += 1) {
-      if (tasks[i].index === id) tasks[i].description = description;
-    }
+    edit(tasks, description, id);
     editButton.classList.add('d-none');
     removeButton.classList.remove('d-none');
     input.classList.add('d-none');

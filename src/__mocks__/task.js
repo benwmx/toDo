@@ -76,3 +76,7 @@ export const removeCompletedTasks = (tasks) => {
   updateStorage(tasks);
   return tasks;
 };
+
+export const edit = (tasks, description, id) => {
+  tasks[id - 1].description = description;
+};

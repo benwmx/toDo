@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import {
-  addTask, removeTask, orderTasks, updateStorage, showList, updateStatus, removeCompletedTasks,
+  addTask, removeTask, orderTasks, updateStorage, showList, updateStatus, removeCompletedTasks, edit
 } from '../task.js';
 import localStorage from '../__mocks__/localStorage.js';
 
@@ -119,5 +119,20 @@ describe('Remove all completed tasks', () => {
     // Assert
     expect(tasks).toMatchObject(output);
     expect(localStorage.getItem('storage')).toMatchObject(tasks);
+  });
+});
+
+describe('Edit a tasks', () => {
+  test('Check If edit task is working', () => {
+    // Arrange
+    const description = 'The Task has been Edited';
+    const id = 1;
+    output = [
+      { description, index: 1, completed: false },
+    ];
+    // Act
+    edit(tasks, description, id);
+    // Assert
+    expect(tasks).toMatchObject(output);
   });
 });
