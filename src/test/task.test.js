@@ -1,5 +1,8 @@
+/**
+ * @jest-environment jsdom
+ */
 import {
-  addTask, removeTask, orderTasks, updateStorage,
+  addTask, removeTask, orderTasks, updateStorage, showList,
 } from '../task.js';
 import localStorage from '../__mocks__/localStorage.js';
 
@@ -11,6 +14,8 @@ let tasks = [
   { description: 'Second Task', index: 2, completed: true },
 ];
 let output;
+
+document.body.innerHTML = '<div id="list"></div>';
 
 describe('Add a task method', () => {
   test('Add one task', () => {
@@ -30,6 +35,14 @@ describe('Add a task method', () => {
     updateStorage(tasks);
     // Assert
     expect(localStorage.getItem('storage')).toMatchObject(tasks);
+  });
+
+  test('Check if the tasks is added to the DOM', () => {
+    // Act
+    showList(tasks);
+    // Assert
+    const list = document.querySelectorAll('li');
+    expect(list).toHaveLength(3);
   });
 });
 
@@ -61,5 +74,13 @@ describe('Delete a task method', () => {
     updateStorage(tasks);
     // Assert
     expect(localStorage.getItem('storage')).toMatchObject(tasks);
+  });
+
+  test('Check if the tasks is removed from the DOM', () => {
+    // Act
+    showList(tasks);
+    // Assert
+    const list = document.querySelectorAll('li');
+    expect(list).toHaveLength(2);
   });
 });
