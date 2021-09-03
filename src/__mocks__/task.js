@@ -63,3 +63,16 @@ export const showList = (tasksList) => {
     listDiv.appendChild(task);
   }
 };
+
+export const updateStatus = (list, id, completed) => {
+  list.forEach((task) => {
+    if (task.index === id) task.completed = completed;
+  });
+};
+
+export const removeCompletedTasks = (tasks) => {
+  tasks = tasks.filter((task) => task.completed === false);
+  orderTasks(tasks);
+  updateStorage(tasks);
+  return tasks;
+};

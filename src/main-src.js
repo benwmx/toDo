@@ -3,12 +3,11 @@
 import './style-src.css';
 import Sortable from 'sortablejs';
 import {
-  showList, updateStorage, addTask, editTask, updateStatus, orderTasks, removeTask,
+  showList, updateStorage,
+  addTask, editTask, updateStatus,
+  orderTasks, removeTask, getStorage,
+  updateAfterDrag, removeCompletedTasks,
 } from './task.js';
-
-import {
-  getStorage, updateAfterDrag, removeCompletedTasks,
-} from './storage.js';
 
 let tasks = getStorage();
 

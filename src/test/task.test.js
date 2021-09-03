@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 import {
-  addTask, removeTask, orderTasks, updateStorage, showList,
+  addTask, removeTask, orderTasks, updateStorage, showList, updateStatus, removeCompletedTasks,
 } from '../task.js';
 import localStorage from '../__mocks__/localStorage.js';
 
@@ -10,7 +10,7 @@ jest.mock('../task');
 
 // Arrange
 let tasks = [
-  { description: 'New Task', index: 1, completed: false },
+  { description: 'New Task', index: 1, completed: true },
   { description: 'Second Task', index: 2, completed: true },
 ];
 let output;
@@ -49,7 +49,7 @@ describe('Add a task method', () => {
 describe('Delete a task method', () => {
   test('Delete a task', () => {
     // Arrange
-    output = [{ description: 'New Task', index: 1, completed: false },
+    output = [{ description: 'New Task', index: 1, completed: true },
       { description: 'Third Task', index: 3, completed: false }];
     // Act
     tasks = removeTask(tasks, 2);
@@ -62,7 +62,7 @@ describe('Delete a task method', () => {
   });
   test('Order the tasks with unordered indexes', () => {
     // Arrange
-    output = [{ description: 'New Task', index: 1, completed: false },
+    output = [{ description: 'New Task', index: 1, completed: true },
       { description: 'Third Task', index: 2, completed: false }];
     // Act
     orderTasks(tasks);
@@ -82,5 +82,42 @@ describe('Delete a task method', () => {
     // Assert
     const list = document.querySelectorAll('li');
     expect(list).toHaveLength(2);
+  });
+});
+
+describe('Update the status of a task', () => {
+  test('Update the status of a task with id', () => {
+    // Arrange
+    output = [
+      { description: 'New Task', index: 1, completed: false },
+      { description: 'Third Task', index: 2, completed: true },
+    ];
+
+    // Act
+    updateStatus(tasks, 1, false);
+    updateStatus(tasks, 2, true);
+    // Assert
+    expect(tasks).toMatchObject(output);
+  });
+
+  test('Check if the status of the tasks has been updated in Local Storage', () => {
+    // Act
+    updateStorage(tasks);
+    // Assert
+    expect(localStorage.getItem('storage')).toMatchObject(tasks);
+  });
+});
+
+describe('Remove all completed tasks', () => {
+  test('Remove a completed task in the local storage', () => {
+    // Arrange
+    output = [
+      { description: 'New Task', index: 1, completed: false },
+    ];
+    // Act
+    tasks = removeCompletedTasks(tasks);
+    // Assert
+    expect(tasks).toMatchObject(output);
+    expect(localStorage.getItem('storage')).toMatchObject(tasks);
   });
 });
