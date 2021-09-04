@@ -54,6 +54,10 @@ export const removeTask = (tasks, id) => {
   return tasks;
 };
 
+export const edit = (tasks, description, id) => {
+  tasks[id - 1].description = description;
+};
+
 export const editTask = (tasks, target) => {
   const id = parseInt(target.parentElement.parentElement.id, 10);
   let description = target.innerText;
@@ -69,9 +73,7 @@ export const editTask = (tasks, target) => {
     description = input.value;
   });
   editButton.addEventListener('click', () => {
-    for (let i = 0; i < tasks.length; i += 1) {
-      if (tasks[i].index === id) tasks[i].description = description;
-    }
+    edit(tasks, description, id);
     editButton.classList.add('d-none');
     removeButton.classList.remove('d-none');
     input.classList.add('d-none');
@@ -91,4 +93,30 @@ export const updateStatus = (list, id, completed) => {
   list.forEach((task) => {
     if (task.index === id) task.completed = completed;
   });
+};
+
+export const getStorage = () => {
+  const storage = JSON.parse(localStorage.getItem('storage'));
+  return (storage !== null) ? storage : [];
+};
+
+export const updateAfterDrag = (container) => {
+  const listOfElements = container.children;
+  const tasks = getStorage();
+  const orderedTasks = [];
+  Array.from(listOfElements).forEach((element) => {
+    const id = parseInt(element.id, 10);
+    const index = tasks.findIndex((task) => task.index === id);
+    orderedTasks.push(tasks[index]);
+  });
+  orderTasks(orderedTasks);
+  updateStorage(orderedTasks);
+  return orderedTasks;
+};
+
+export const removeCompletedTasks = (tasks) => {
+  tasks = tasks.filter((task) => task.completed === false);
+  orderTasks(tasks);
+  updateStorage(tasks);
+  return tasks;
 };

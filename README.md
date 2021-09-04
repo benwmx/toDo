@@ -7,7 +7,10 @@
 
 ![screenshot](./img/preview.png)
 
-Additional description about the project and its features.
+## Unit Testing [jest](https://jestjs.io/)
+You can run unit test using this command `npm run test`
+These are list of test we have writed:
+![](./img/test.png)
 
 ## Built With
 

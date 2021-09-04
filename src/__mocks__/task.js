@@ -63,3 +63,34 @@ export const showList = (tasksList) => {
     listDiv.appendChild(task);
   }
 };
+
+export const updateStatus = (list, id, completed) => {
+  list.forEach((task) => {
+    if (task.index === id) task.completed = completed;
+  });
+};
+
+export const removeCompletedTasks = (tasks) => {
+  tasks = tasks.filter((task) => task.completed === false);
+  orderTasks(tasks);
+  updateStorage(tasks);
+  return tasks;
+};
+
+export const edit = (tasks, description, id) => {
+  tasks[id - 1].description = description;
+};
+
+export const updateAfterDrag = (container) => {
+  const listOfElements = container.children;
+  const tasks = localStorage.getItem('storage');
+  const orderedTasks = [];
+  Array.from(listOfElements).forEach((element) => {
+    const id = parseInt(element.id, 10);
+    const index = tasks.findIndex((task) => task.index === id);
+    orderedTasks.push(tasks[index]);
+  });
+  orderTasks(orderedTasks);
+  updateStorage(orderedTasks);
+  return orderedTasks;
+};
