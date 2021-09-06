@@ -6,7 +6,8 @@
   "homepage": "https://benwmx.github.io/toDo/",
   "scripts": {
     "test": "jest --coverage",
-    "build": "webpack",
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
     "start": "webpack serve --open",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
